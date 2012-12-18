@@ -1,7 +1,5 @@
-# Yeoman
-dist/
-temp/
-
+# NodeJS
+node_modules
 
 # Netbeans
 nbproject/private/
