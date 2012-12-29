@@ -12,16 +12,18 @@ game = {
   status: 'server-confirmed',
   server: 'player1',
   player1: {
-    firstName: 'Hubert',
-    lastName : 'SABLONNIERE',
-    email    : 'hubert.sablonniere@gmail.com',
-    score    : 8
+    firstName: '?',
+    lastName: '',
+    email: '',
+    score: 0,
+    connected: false
   },
   player2: {
-    firstName: 'Arnaud',
-    lastName : 'SPANNEUT',
-    email    : 'arnaud.spanneut@gmail.com',
-    score    : 11
+    firstName: '?',
+    lastName: '',
+    email: '',
+    score: 0,
+    connected: false
   }
 };
 
@@ -40,5 +42,5 @@ io = require('socket.io').listen(app);
 var dashboard = io
     .of('/dashboard')
     .on('connection', function (socket) {
-        socket.emit('game-updated', game);
+      socket.emit('game-updated', game);
     });
