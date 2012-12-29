@@ -4,7 +4,8 @@
   "description": "Gump NodeJS server",
   "main": "server.js",
   "dependencies": {
-    "node-static": "0.6.5"
+    "node-static": "0.6.5",
+    "socket.io": "0.9.13"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

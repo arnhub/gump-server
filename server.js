@@ -4,6 +4,8 @@ var nodeStatic = require('node-static'),
     http = require('http'),
     staticServer = new nodeStatic.Server('./gump-app/dist'),
     port = 8080,
+    io,
+    app,
     game;
 
 game = {
@@ -23,7 +25,7 @@ game = {
   }
 };
 
-http.createServer(function (request, response) {
+app = http.createServer(function (request, response) {
 
   if (request.url.match(/^\/api\/game/)) {
     response.end(JSON.stringify(game));
@@ -32,3 +34,11 @@ http.createServer(function (request, response) {
   }
 
 }).listen(port);
+
+io = require('socket.io').listen(app);
+
+var dashboard = io
+    .of('/dashboard')
+    .on('connection', function (socket) {
+        socket.emit('game-updated', game);
+    });
